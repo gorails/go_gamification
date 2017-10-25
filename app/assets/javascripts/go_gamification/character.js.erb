@@ -48,15 +48,15 @@ function prepareCanvas(canvasDiv, canvasWidth, canvasHeight)
     canvas.width = canvas.width; // clears the canvas
     context.fillText("loading...", 40, 140);
 
-    loadImage(("leftArm"));
-    loadImage(("legs"));
-    loadImage(("torso"));
-    loadImage(("rightArm"));
-    loadImage(("head"));
-    loadImage(("hair"));
-    loadImage(("leftArm-jump"));
-    loadImage(("legs-jump"));
-    loadImage(("rightArm-jump"));
+    loadImage(("<%= asset_path 'go_gamification/leftArm' %>"));
+    loadImage(("<%= asset_path 'go_gamification/legs' %>"));
+    loadImage(("<%= asset_path 'go_gamification/torso' %>"));
+    loadImage(("<%= asset_path 'go_gamification/rightArm' %>"));
+    loadImage(("<%= asset_path 'go_gamification/head' %>"));
+    loadImage(("<%= asset_path 'go_gamification/hair' %>"));
+    loadImage(("<%= asset_path 'go_gamification/leftArm-jump' %>"));
+    loadImage(("<%= asset_path 'go_gamification/legs-jump' %>"));
+    loadImage(("<%= asset_path 'go_gamification/rightArm-jump' %>"));
 }
 
 function loadImage(name) {
@@ -65,7 +65,7 @@ function loadImage(name) {
     images[name].onload = function() {
         resourceLoaded();
     }
-    images[name].src = "/assets/go_gamification/" + name + ".png";
+    images[name].src =  name;
 }
 
 function resourceLoaded() {
@@ -97,25 +97,25 @@ function redraw() {
     }
 
     if (jumping) {
-        context.drawImage(images["leftArm-jump"], x + 40, y - 42 - breathAmt);
+        context.drawImage(images["<%= asset_path 'go_gamification/leftArm-jump' %>"], x + 40, y - 42 - breathAmt);
     } else {
-        context.drawImage(images["leftArm"], x + 40, y - 42 - breathAmt);
+        context.drawImage(images["<%= asset_path 'go_gamification/leftArm' %>"], x + 40, y - 42 - breathAmt);
     }
 
     if (jumping) {
-        context.drawImage(images["legs-jump"], x, y- 6);
+        context.drawImage(images["<%= asset_path 'go_gamification/legs-jump' %>"], x, y- 6);
     } else {
-        context.drawImage(images["legs"], x, y);
+        context.drawImage(images["<%= asset_path 'go_gamification/legs' %>"], x, y);
     }
 
-    context.drawImage(images["torso"], x, y - 50);
-    context.drawImage(images["head"], x - 10, y - 125 - breathAmt);
-    context.drawImage(images["hair"], x - 37, y - 138 - breathAmt);
+    context.drawImage(images["<%= asset_path 'go_gamification/torso' %>"], x, y - 50);
+    context.drawImage(images["<%= asset_path 'go_gamification/head' %>"], x - 10, y - 125 - breathAmt);
+    context.drawImage(images["<%= asset_path 'go_gamification/hair' %>"], x - 37, y - 138 - breathAmt);
 
     if (jumping) {
-        context.drawImage(images["rightArm-jump"], x - 35, y - 42 - breathAmt);
+        context.drawImage(images["<%= asset_path 'go_gamification/rightArm-jump' %>"], x - 35, y - 42 - breathAmt);
     } else {
-        context.drawImage(images["rightArm"], x - 15, y - 42 - breathAmt);
+        context.drawImage(images["<%= asset_path 'go_gamification/rightArm' %>"], x - 15, y - 42 - breathAmt);
     }
 
     drawEllipse(x + 47, y - 68 - breathAmt, 8, curEyeHeight); // Left Eye
