@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    go_gamification (0.0.14)
+    go_gamification (0.0.16)
       carrierwave
       draper
       rails
@@ -65,7 +65,7 @@ GEM
       activesupport (~> 5.0)
       request_store (~> 1.0)
     erubi (1.7.0)
-    globalid (0.4.1)
+    globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
