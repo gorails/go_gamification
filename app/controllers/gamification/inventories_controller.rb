@@ -1,5 +1,6 @@
 class Gamification::InventoriesController < ApplicationController
   before_action :set_gamification_inventory, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:update]
 
   # GET /gamification/inventories
   def index
@@ -21,7 +22,7 @@ class Gamification::InventoriesController < ApplicationController
 
   # POST /gamification/inventories
   def create
-    @gamification_inventory = Gamification::Inventory.new(gamification_inventory_params)
+    @gamification_inventory = Gamification::Inventory.new(inventory_params)
 
     if @gamification_inventory.save
       redirect_to @gamification_inventory, notice: 'Inventory was successfully created.'
@@ -32,10 +33,16 @@ class Gamification::InventoriesController < ApplicationController
 
   # PATCH/PUT /gamification/inventories/1
   def update
-    if @gamification_inventory.update(gamification_inventory_params)
-      redirect_to @gamification_inventory, notice: 'Inventory was successfully updated.'
-    else
-      render :edit
+    @gamification_inventory.unnequip_same_type_item
+    respond_to do |format|
+      if @gamification_inventory.update_attribute(:equipped, params[:equipped])
+
+        format.js
+        format.json { head :no_content }
+      else
+        format.js
+        format.json { render json: @gamification_inventory.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -46,13 +53,18 @@ class Gamification::InventoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_gamification_inventory
-      @gamification_inventory = Gamification::Inventory.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_gamification_inventory
+    @gamification_inventory = Gamification::Inventory.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def gamification_inventory_params
-      params.require(:gamification_inventory).permit(:User_id, :Item_id, :equipped)
-    end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+
+  def inventory_params
+    params.require(:inventory).permit(:user_id, :equipped, :gamification_item_id)
+  end
 end
