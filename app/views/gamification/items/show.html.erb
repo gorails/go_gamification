@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gamification_item.name %>
+</p>
+
+<p>
+  <strong>Itemtype:</strong>
+  <%= @gamification_item.item_type %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @gamification_item.image %>
+</p>
+
+<p>
+  <strong>Rarity:</strong>
+  <%= @gamification_item.rarity %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @gamification_item.cost %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @gamification_item.user_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gamification_item.description %>
+</p>
+
+<%= link_to 'Edit', edit_gamification_item_path(@gamification_item) %> |
+<%= link_to 'Back', gamification_items_path %>

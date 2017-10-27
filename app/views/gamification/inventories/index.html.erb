@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gamification Inventories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Item</th>
+      <th>Equipped</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gamification_inventories.each do |gamification_inventory| %>
+      <tr>
+        <td><%= gamification_inventory.User %></td>
+        <td><%= gamification_inventory.Item %></td>
+        <td><%= gamification_inventory.equipped %></td>
+        <td><%= link_to 'Show', gamification_inventory %></td>
+        <td><%= link_to 'Edit', edit_gamification_inventory_path(gamification_inventory) %></td>
+        <td><%= link_to 'Destroy', gamification_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gamification Inventory', new_gamification_inventory_path %>

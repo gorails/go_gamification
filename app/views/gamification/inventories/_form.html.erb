@@ -1,0 +1,32 @@
+<%= form_with(model: gamification_inventory, local: true) do |form| %>
+  <% if gamification_inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gamification_inventory.errors.count, "error") %> prohibited this gamification_inventory from being saved:</h2>
+
+      <ul>
+      <% gamification_inventory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :User_id %>
+    <%= form.text_field :User_id, id: :gamification_inventory_User_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Item_id %>
+    <%= form.text_field :Item_id, id: :gamification_inventory_Item_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipped %>
+    <%= form.check_box :equipped, id: :gamification_inventory_equipped %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

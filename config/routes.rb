@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :gamification do
-    resources :levels do
-
-    end
+    resources :levels
+    resources :items
+    resources :item_types
+    resources :inventories
   end
 end
