@@ -5,6 +5,7 @@
       <%= f.input :name, id: :gamification_item_name %>
       <%= f.input :description, id: :gamification_item_description %>
       <%= f.input :gamification_item_type_id,:collection => Gamification::ItemType.all,:value_method => :id,:label => "Tipo" ,:include_blank => false %>
+      <%= f.input :gamification_item_group_id,:collection => Gamification::ItemGroup.all,:value_method => :id,:label => "Grupo" ,:include_blank => false %>
 
       <%= f.select :rarity, [['Comum', 1], ['Raro', 2], ['Super Raro', 3], ['Ultra Raro', 4], ['Secreto Raro', 5], ['Ultimate Raro', 6]] %>
 

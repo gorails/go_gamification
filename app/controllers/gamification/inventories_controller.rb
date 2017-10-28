@@ -33,9 +33,8 @@ class Gamification::InventoriesController < ApplicationController
 
   # PATCH/PUT /gamification/inventories/1
   def update
-    @gamification_inventory.unnequip_same_type_item
     respond_to do |format|
-      if @gamification_inventory.update_attribute(:equipped, params[:equipped])
+      if @gamification_inventory.equip_item(params[:user_id].to_i)
 
         format.js
         format.json { head :no_content }

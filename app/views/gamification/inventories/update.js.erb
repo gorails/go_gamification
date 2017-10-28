@@ -1,33 +1,31 @@
 
 
-//alert("asdfasdf")
-$(".character").html("<%= j(render :partial => "users/character") %>");
-
+$('#inventory').html('<%= escape_javascript render 'inventory' %>');
 
 var parts = [
     {
         name: 'leftArm',
-        ident: "<%= asset_path 'go_gamification/leftArm' %>",
+        ident: "<%= @user.decorate.equipped_left_arm%>",
         visible: true,
         x: charX + 40,
         y: charY - 42 - breathAmt
     },
     {
         name: 'leftArmjump',
-        ident: "<%= asset_path 'go_gamification/leftArm-jump' %>",
+        ident: "<%= @user.decorate.equipped_left_arm_jump %>",
         visible: false,
         x: charX + 40,
         y: charY - 42 - breathAmt
     },
-    {name: 'legs', ident: "<%= asset_path 'go_gamification/legs' %>", visible: true, x: charX, y: charY},
+    {name: 'legs', ident: "<%= @user.decorate.equipped_legs %>", visible: true, x: charX, y: charY},
     {
         name: 'legsjump',
-        ident: "<%= asset_path 'go_gamification/legs-jump' %>",
+        ident: "<%= @user.decorate.equipped_legs_jump%>",
         visible: false,
         x: charX,
         y: charY - 6
     },
-    {name: 'torso', ident: "<%= asset_path 'go_gamification/torso' %>", visible: true, x: charX, y: charY - 50},
+    {name: 'torso', ident: "<%= @user.decorate.equipped_torso %>", visible: true, x: charX, y: charY - 50},
     {
         name: 'head',
         ident: "<%= @user.decorate.equipped_head %>",
@@ -44,14 +42,14 @@ var parts = [
     },
     {
         name: 'rightArm',
-        ident: "<%= asset_path 'go_gamification/rightArm' %>",
+        ident: "<%= @user.decorate.equipped_right_arm %>",
         visible: true,
         x: charX - 15,
         y: charY - 42 - breathAmt
     },
     {
         name: 'rightArmjump',
-        ident: "<%= asset_path 'go_gamification/rightArm-jump' %>",
+        ident: "<%= @user.decorate.equipped_right_arm_jump %>",
         visible: false,
         x: charX - 35,
         y: charY - 42 - breathAmt
@@ -172,7 +170,7 @@ $(document).ready(function () {
     character.add(bodyParts['rightEye']);
 
     bg = engine.createBitmap({
-        src: "<%= asset_path 'go_gamification/background' %>",
+        src: "<%= @user.decorate.equipped_background %>",
         x: 0,
         y: 0
     });
@@ -180,7 +178,7 @@ $(document).ready(function () {
     bg.addEventListener('onload', increaseLoaded);
 
     cloud = engine.createBitmap({
-        src: "<%= asset_path 'go_gamification/cloud' %>",
+        src: "<%=@user.decorate.equipped_flyingobject %>",
         x: engine._stageWidth + 20,
         y: 80
     });

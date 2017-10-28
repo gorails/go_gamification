@@ -1,0 +1,2 @@
+module Gamification::ItemGroupsHelper
+end

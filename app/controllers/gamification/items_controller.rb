@@ -53,6 +53,6 @@ class Gamification::ItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gamification_item_params
-      params.require(:gamification_item).permit(:name, :gamification_item_type_id, :image, :rarity, :cost,:user_id, :description)
+      params.require(:gamification_item).permit(:name, :gamification_item_type_id,:gamification_item_group_id, :image, :rarity, :cost,:user_id, :description)
     end
 end
