@@ -1,7 +1,8 @@
 module Gamification
   class LevelsController < ApplicationController
-
-    before_action :set_level, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:list, :show_list]
+    before_action :authenticate_user!
+    load_and_authorize_resource except: [:create]
 
     # GET /levels
     def index
@@ -23,6 +24,8 @@ module Gamification
 
     # POST /levels
     def create
+      authorize! :create, @level
+
       @level = Level.new(level_params)
 
       if @level.save

@@ -1,3 +1,3 @@
 module GoGamification
-  VERSION = "0.0.17"
+  VERSION = "0.0.19"
 end

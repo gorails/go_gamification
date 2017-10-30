@@ -1,6 +1,7 @@
 class Gamification::ItemTypesController < ApplicationController
   before_action :set_gamification_item_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  load_and_authorize_resource except: [:create]
   # GET /gamification/item_types
   def index
     @gamification_item_types = Gamification::ItemType.all
@@ -21,6 +22,8 @@ class Gamification::ItemTypesController < ApplicationController
 
   # POST /gamification/item_types
   def create
+    authorize! :create, @gamification_item_type
+
     @gamification_item_type = Gamification::ItemType.new(gamification_item_type_params)
 
     if @gamification_item_type.save

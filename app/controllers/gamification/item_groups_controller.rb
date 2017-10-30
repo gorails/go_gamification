@@ -1,6 +1,7 @@
 class Gamification::ItemGroupsController < ApplicationController
   before_action :set_gamification_item_group, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  load_and_authorize_resource except: [:create]
   # GET /gamification/item_groups
   def index
     @gamification_item_groups = Gamification::ItemGroup.all
@@ -21,6 +22,8 @@ class Gamification::ItemGroupsController < ApplicationController
 
   # POST /gamification/item_groups
   def create
+    authorize! :create, @gamification_item_group
+
     @gamification_item_group = Gamification::ItemGroup.new(gamification_item_group_params)
 
     if @gamification_item_group.save
