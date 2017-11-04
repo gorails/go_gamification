@@ -21,7 +21,7 @@
               <% Gamification::ItemType.where("key not in('legsjump','rightarmjump','leftarmjump')").select(:key).distinct.order(key: :asc).each do |item_type| %>
                   <% Gamification::Inventory.where(user_id: @user.id, gamification_item_types: {key: item_type.key})
                          .joins(item: :item_type).each do |inventory| %>
-                      <div class="col-sm-6 col-lg-3">
+                      <div class="col-sm-6 col-lg-2">
                         <div class="block block-bordered block-link-hover3 text-center" href="javascript:void(0)">
                           <div class="block-content block-content-full bg-gray-lighter border-black-op" style="min-height: 75px;max-height:
                               50px" data-toggle="popover" title="" data-placement="top" data-content="<%= inventory.item.description %>" type="button" data-original-title="<%= inventory.item.name %>">
