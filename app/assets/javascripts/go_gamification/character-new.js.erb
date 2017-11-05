@@ -18,18 +18,6 @@ var isJumping = false;
 var jumpHeight = 45;
 var cloudSpeed = 0.5;
 
-var parts = [
-    {name: 'leftArm',ident: "<%= asset_path 'go_gamification/leftArm' %>", visible: true, x: charX + 40, y: charY - 42 - breathAmt},
-    {name:'leftArmjump',ident: "<%= asset_path 'go_gamification/leftArm-jump' %>", visible: false, x: charX + 40, y: charY - 42 - breathAmt},
-    {name: 'legs',ident: "<%= asset_path 'go_gamification/legs' %>", visible: true, x: charX, y: charY},
-    {name: 'legsjump',ident: "<%= asset_path 'go_gamification/legs-jump' %>", visible: false, x: charX, y: charY-6},
-    {name: 'torso',ident: "<%= asset_path 'go_gamification/torso' %>", visible: true, x: charX, y: charY - 50},
-    {name: 'head',ident: "<%= asset_path 'go_gamification/head' %>", visible: true, x: charX - 10, y: charY - 125 - breathAmt},
-    {name: 'hair',ident: "<%= asset_path 'go_gamification/hair' %>", visible: true, x: charX - 37, y: charY - 138 - breathAmt},
-    {name: 'rightArm',ident: "<%= asset_path 'go_gamification/rightArm' %>", visible: true, x: charX - 15, y: charY - 42 - breathAmt},
-    {name: 'rightArmjump',ident: "<%= asset_path 'go_gamification/rightArm-jump' %>", visible: false, x: charX - 35, y: charY - 42 - breathAmt},
-
-];
 
 var bodyParts = [];
 
@@ -44,7 +32,7 @@ function myLoop() {
 
     if(cx+cloud.width < 0) {
         cx = engine._stageWidth + 20;
-        cy = Math.floor(Math.random()*230);
+        cy = Math.floor(Math.random()*50);
         cloud.y = cy;
     }
 

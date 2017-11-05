@@ -1,0 +1,2 @@
+module Gamification::ItemTypesHelper
+end

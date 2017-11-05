@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @gamification_inventory.User %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @gamification_inventory.Item %>
+</p>
+
+<p>
+  <strong>Equipped:</strong>
+  <%= @gamification_inventory.equipped %>
+</p>
+
+<%= link_to 'Edit', edit_gamification_inventory_path(@gamification_inventory) %> |
+<%= link_to 'Back', gamification_inventories_path %>

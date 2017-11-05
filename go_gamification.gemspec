@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency "draper"
   s.add_dependency "rails"
   s.add_dependency "carrierwave"
+  s.add_dependency "devise"
+  s.add_dependency "cancancan"
 
   s.add_development_dependency "sqlite3"
 end

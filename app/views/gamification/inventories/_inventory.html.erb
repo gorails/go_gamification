@@ -1,0 +1,56 @@
+<div id="inventory">
+  <div class="col-sm-7 col-sm-pull-5 col-lg-8 col-lg-pull-4">
+    <div class="block block-opt-refresh-icon6">
+      <div class="block-header">
+        <ul class="block-options">
+          <li>
+            <button type="button" data-toggle="block-option" data-action="fullscreen_toggle">
+              <i class="si si-size-fullscreen"></i></button>
+          </li>
+          <li>
+            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo">
+              <i class="si si-refresh"></i></button>
+          </li>
+        </ul>
+        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Inventario</h3>
+      </div>
+      <div class="block-content">
+        <div class="block">
+          <div class="block-content">
+            <div class="row">
+              <% Gamification::ItemType.where("key not in('legsjump','rightarmjump','leftarmjump')").select(:key).distinct.order(key: :asc).each do |item_type| %>
+                  <% Gamification::Inventory.where(user_id: @user.id, gamification_item_types: {key: item_type.key})
+                         .joins(item: :item_type).each do |inventory| %>
+                      <div class="col-sm-6 col-lg-2">
+                        <div class="block block-bordered block-link-hover3 text-center" href="javascript:void(0)">
+                          <div class="block-content block-content-full bg-gray-lighter border-black-op" style="min-height: 75px;max-height:
+                              50px" data-toggle="popover" title="" data-placement="top" data-content="<%= inventory.item.description %>" type="button" data-original-title="<%= inventory.item.name %>">
+                            <div class="h5 font-w700"><%= image_tag inventory.item.image.icon32 %></div>
+
+
+                            <div class="h7 text-muted text-uppercase push-5-t"></div>
+                          </div>
+                          <div class="block-content block-content-full block-content-xs " style="text-align: center;vertical-align: middle;min-height: 50px;max-height:50px">
+                            <% if inventory.equipped %>
+                                <button class="btn btn-xs btn-info push-5-r push-10" type="button">Equipado</button>
+                            <% else %>
+                                <%= link_to gamification_inventory_path(inventory, gamification_item_id: inventory.gamification_item_id,
+                                                                        user_id: @user.id, :equipped => true), :remote => true,
+                                            :method => :put, class: 'btn btn-success btn-xs',:data => { :disable_with => "<i class='fa fa-cogs' aria-hidden='true'></i>Equipando".html_safe } do %>
+                                    <i class="fa fa-check-square ">Equipar </i>
+                                <% end %>
+                            <% end %>
+
+                          </div>
+                        </div>
+                      </div>
+
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

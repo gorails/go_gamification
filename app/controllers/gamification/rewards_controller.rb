@@ -1,6 +1,8 @@
 module Gamification
   class RewardsController < ApplicationController
     before_action :verify_checksum
+    before_action :authenticate_user!
+    load_and_authorize_resource except: [:create]
 
     def create
       if rewarding.is_a? ::Gamification::Goal
