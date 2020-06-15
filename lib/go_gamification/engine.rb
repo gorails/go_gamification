@@ -10,9 +10,6 @@ module GoGamification
       end
     end
 
-    config.assets.precompile += ['*.js', '*.css', '**/*.js', '**/*.css', '*.jpg',
-                                                   '*.png', '*.ico', '*.gif', '*.woff2', '*.eot',
-                                                   '*.woff', '*.ttf', '*.svg']
 
   end
 end

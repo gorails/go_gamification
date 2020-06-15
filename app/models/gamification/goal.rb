@@ -1,5 +1,6 @@
 module Gamification
   class Goal < ApplicationRecord
+    self.table_name = "gamification_goals"
     belongs_to :rewarding, polymorphic: true
     has_one :medal, dependent: :destroy
     has_many :rewards, dependent: :destroy

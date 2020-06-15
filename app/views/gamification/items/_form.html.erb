@@ -11,7 +11,8 @@
 
       <%= f.input :cost, id: :gamification_item_cost %>
 
-      <%= f.input :user_id,:collection => User.all,:value_method => :id,:label => "User" ,:include_blank => false %>
+      <%= f.input :user_id,:collection => User.staff,label_method: :realname,:value_method => :id,:label => "User" ,:include_blank =>
+          false %>
 
       <%= f.file_field :image %>
 

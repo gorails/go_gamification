@@ -1,18 +1,16 @@
 <% collection.each do |resource| %>
     <tr id="<%= dom_id(resource) %>">
       <td><%= resource.name %></td>
-      <td><%= resource.item_type %></td>
-      <td> <%= image_tag resource.image.icon32 %></td>
+      <td><%= resource.item_type.name %></td>
+      <td> <%=  image_tag url_for(resource.image) if resource.image.attached?%></td>
       <td><%= resource.rarity %></td>
       <td><%= resource.cost %></td>
-      <td><%= resource.user.name %></td>
+      <td><%= resource.user.realname %></td>
       <td><%= resource.description %></td>
       <td class="text-center">
-        <% if current_user and current_user.admin? %>
             <%= link_to 'Show',  resource %>
             <%= link_to 'Edit', edit_gamification_item_path(resource) %>
             <%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
       </td>
       </td>
     </tr>

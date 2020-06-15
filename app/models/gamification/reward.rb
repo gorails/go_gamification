@@ -1,5 +1,6 @@
 module Gamification
   class Reward < ApplicationRecord
+    self.table_name = "gamification_rewards"
     belongs_to :goal
     belongs_to :rewardable, polymorphic: true, inverse_of: :rewards
 

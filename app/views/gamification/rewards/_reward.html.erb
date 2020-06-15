@@ -1,9 +1,13 @@
 <% if reward.medal %>
-        <div class="col-xs-6">
-          <div class="push-5"><%= image_tag reward.medal.image.icon32 %></div>
-          <div class="h5 font-w300 text-muted"><%= reward.medal.name %> - <%= reward.medal.description %></div>
-          <div class="h5 font-w300 text-muted"><%= reward.points %> xp</div>
-        </div>
+  <div class="vertical-timeline-block">
+    <div class="vertical-timeline-icon navy-bg">
+      <%= image_tag reward.medal.image.variant(resize: "#{30}x#{nil}").processed if reward.medal.image.attached? %>
+    </div>
+    <div class="vertical-timeline-content">
+      <p><%= reward.medal.name %> - <%= reward.medal.description %>
+      </p>
+      <span class="vertical-date small text-muted"> <%= reward.points %> xp </span>
+    </div>
+  </div>
 <% end %>
-
 

@@ -1,5 +1,6 @@
 module Gamification
   class Inventory < ApplicationRecord
+    self.table_name = "gamification_inventories"
     belongs_to :user
     belongs_to :item, class_name: 'Gamification::Item', foreign_key: :gamification_item_id
 
