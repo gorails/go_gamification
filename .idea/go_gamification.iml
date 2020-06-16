@@ -28,7 +28,6 @@
     <orderEntry type="library" scope="PROVIDED" name="arel (v9.0.0, rbenv: 2.5.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.1.4, rbenv: 2.5.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cancancan (v3.1.0, rbenv: 2.5.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="carrierwave (v2.1.0, rbenv: 2.5.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.7.2, rbenv: 2.5.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="draper (v4.0.1, rbenv: 2.5.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.5.3) [gem]" level="application" />
