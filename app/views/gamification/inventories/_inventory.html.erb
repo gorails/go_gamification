@@ -9,16 +9,16 @@
             <div class="ibox-content" >
             <div class="block-content block-content-full bg-gray-lighter border-black-op" style="min-height: 75px;max-height:
                 50px" data-toggle="popover" title="" data-placement="top" data-content="<%= inventory.item.description %>" type="button" data-original-title="<%= inventory.item.name %>">
-              <div class="h5 font-w700"><%= image_tag inventory.item.image.variant(resize: "#{50}x#{nil}").processed %></div>
+              <div class="h5 font-w700"><%= image_tag inventory.item.image.variant(resize: "#{50}x#{nil}").processed unless Rails.env.development? %></div>
 
             </div>
             <% if inventory.equipped %>
-              <button class="btn btn-xs btn-info push-5-r push-10" type="button">Equipado</button>
+                <button class="btn btn-xs btn-info push-5-r push-10" type="button"><i class="fa fa-check-square ">Equipado</i></button>
             <% else %>
               <%= link_to gamification_inventory_path(inventory, gamification_item_id: inventory.gamification_item_id,
                                                       user_id: current_user.id, :equipped => true), :remote => true,
                           :method => :put, class: 'btn btn-success btn-xs', :data => { :disable_with => "<i class='fa fa-cogs' aria-hidden='true'></i>Equipando".html_safe } do %>
-                <i class="fa fa-check-square ">Equipar </i>
+                Equipar
               <% end %>
             <% end %>
           </div>
